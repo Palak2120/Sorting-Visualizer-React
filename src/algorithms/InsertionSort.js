@@ -1,5 +1,4 @@
 const insertionSort = (array, position, arraySteps, colorSteps) => {
-	console.log("INSERTION SORT begins");
 	let colorKey = colorSteps[colorSteps.length - 1].slice();
 
 	let i, j, key;
@@ -11,15 +10,15 @@ const insertionSort = (array, position, arraySteps, colorSteps) => {
 			array[j + 1] = array[j];
 			arraySteps.push(array.slice());
 			colorKey[i] = 3;
-            if ( i === j + 1 ){
-                colorKey[j + 1] = 4;
-            } else{
-                colorKey[j + 1] = 1;
-            }
+			if (i === j + 1) {
+				colorKey[j + 1] = 4;
+			} else {
+				colorKey[j + 1] = 1;
+			}
 			colorKey[j] = 1;
 			colorSteps.push(colorKey.slice());
-            colorKey[j + 1] = 0;
-            colorKey[i] = 0;
+			colorKey[j + 1] = 0;
+			colorKey[i] = 0;
 			colorKey[j] = 0;
 			j = j - 1;
 		}

@@ -1,7 +1,6 @@
 import { swap } from "./helper";
 
 const bubbleSort = (array, position, arraySteps, colorSteps) => {
-  console.log("BUBBLE SORT begins");
   let colorKey = colorSteps[colorSteps.length - 1].slice();
 
   for (let i = 0; i < array.length - 1; i++) {
@@ -23,9 +22,7 @@ const bubbleSort = (array, position, arraySteps, colorSteps) => {
 
   // Remaining bars become green
   colorSteps[colorSteps.length - 1] = new Array(array.length).fill(2);
-  console.log(array);
-  console.log(colorSteps);
-  return {arraySteps: arraySteps,colorSteps: colorSteps}; 
+  return { arraySteps: arraySteps, colorSteps: colorSteps };
 }
 
 export default bubbleSort;

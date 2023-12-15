@@ -30,6 +30,8 @@ function App() {
     generateStepsFlag: false,
   });
 
+  const[sorting, setSorting] = useState(false);
+
   const algos = ['Bubble Sort', 'Insertion Sort', 'Merge Sort', 'Quick Sort', 'Selection Sort'];
   let ALGORITHMS = {
     'Bubble Sort': bubbleSort,
@@ -89,6 +91,8 @@ function App() {
   });
 
   const startSorting = () => {
+    
+    setSorting(true);
     const { arraySteps, colorSteps, delay, currentStep } = state;
     const timeouts = [];
 
@@ -106,11 +110,15 @@ function App() {
       ...state,
       timeouts: timeouts,
     })
+    
+    setTimeout(() => {
+    setSorting(false);
+  }, delay * (arraySteps.length - currentStep));
   }
 
   let playButton = (
     <Button style={{ fontFamily: 'monospace', backgroundColor: '#434840', color: '#fff', maxHeight: '8vh' }}>
-      <PlayArrowIcon size='large' onClick={startSorting} />
+      <PlayArrowIcon size='large' onClick={startSorting} disabled={sorting}/>
     </Button>)
 
   const handleClickAlgoButton = (event) => {
@@ -153,7 +161,8 @@ function App() {
         aria-controls={open ? 'resources-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
-        id='algorithm-button'>
+        id='algorithm-button'
+        disabled={sorting}>
         Algorithm
       </Button>
       <Menu open={open} onClose={handleClose} anchorEl={anchorEl} MenuListProps={{
@@ -175,7 +184,7 @@ function App() {
 
       <Grid container spacing={2} backgroundColor="#2e2b2b" height='10vh' minWidth='100%' >
         <Grid item>
-          <Button variant='contained' onClick={generateRandomArray} style={{ fontFamily: 'monospace', backgroundColor: '#434840', maxHeight: '8vh' }}>New Array</Button>
+          <Button variant='contained' onClick={generateRandomArray} style={{ fontFamily: 'monospace', backgroundColor: '#434840', maxHeight: '8vh' }} disabled={sorting}>New Array</Button>
         </Grid>
         <Grid item>
           {algoButton}

@@ -1,7 +1,6 @@
 import { swap, insertStep } from './helper';
 
 const quickSort = (array, position, arraySteps, colorSteps) => {
-  console.log("QUICK SORT begins");
   if (array.length < 2) {
     insertStep(array, position, arraySteps);
 
